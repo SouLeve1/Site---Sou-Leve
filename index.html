@@ -42,6 +42,64 @@ src="https://www.facebook.com/tr?id=1763101087700251&ev=PageView&noscript=1"
   gtag('config', 'G-G652JVWEYG');
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var botaoComprar = document.querySelector('a[href*="ozenvitta"]');
+    if (botaoComprar) {
+      botaoComprar.addEventListener('click', function () {
+
+        // Meta Pixel - quando o visitante clica para ver o produto
+        if (typeof fbq === 'function') {
+          fbq('track', 'ViewContent', {
+            content_name: 'Clique no botão Ozenvitta',
+            content_category: 'ozenvitta',
+            event_source: 'Home Sou Leve'
+          });
+        }
+
+        // Google Analytics 4 - evento equivalente
+        if (typeof gtag === 'function') {
+          gtag('event', 'click_ozenvitta_button', {
+            section: 'home_page',
+            destination: '/ozenvitta/',
+            item_name: 'Botão Ozenvitta'
+          });
+        }
+
+      });
+    }
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var botaoEbook = document.querySelector('a[href*="ebook"]');
+    if (botaoEbook) {
+      botaoEbook.addEventListener('click', function () {
+
+        // Meta Pixel – Clique no botão Ebook (interesse no lead)
+        if (typeof fbq === 'function') {
+          fbq('track', 'ViewContent', {
+            content_name: 'Clique no botão Ebook',
+            content_category: 'ebook',
+            event_source: 'Home Sou Leve'
+          });
+        }
+
+        // Google Analytics 4 – evento equivalente
+        if (typeof gtag === 'function') {
+          gtag('event', 'click_ebook_button', {
+            section: 'home_page',
+            destination: '/ebook/',
+            item_name: 'Botão Ebook Grátis'
+          });
+        }
+
+      });
+    }
+  });
+</script>
+
 	<!-- This site is optimized with the Yoast SEO plugin v25.2 - https://yoast.com/wordpress/plugins/seo/ -->
 	<title>Grupo | Sou Leve</title>
 	<link rel="stylesheet" href="https://unpkg.com/swiper@8.4.7/swiper-bundle.min.css" />
