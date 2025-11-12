@@ -144,11 +144,7 @@
   animation: pulseBlue 2.5s infinite;
 }
 
-</style> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N6Q73FS9');</script> <link rel="icon" href="assets/img/soulevelogo.png" sizes="32x32" /><link rel="icon" href="assets/img/soulevelogo.png" sizes="192x192" /><link rel="apple-touch-icon" href="assets/img/soulevelogo.png" /><meta name="msapplication-TileImage" content="assets/img/soulevelogo.png" /><style id="wp-custom-css">body, html {
+</style> </script> <link rel="icon" href="assets/img/soulevelogo.png" sizes="32x32" /><link rel="icon" href="assets/img/soulevelogo.png" sizes="192x192" /><link rel="apple-touch-icon" href="assets/img/soulevelogo.png" /><meta name="msapplication-TileImage" content="assets/img/soulevelogo.png" /><style id="wp-custom-css">body, html {
 overflow-x: hidden !important;
 }
 
@@ -179,24 +175,112 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1364501488595201');
+fbq('init', '1763101087700251');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1364501488595201&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1763101087700251&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
+<!-- End Meta Pixel Code -->  
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QC5VEZXN1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G652JVWEYG"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-1QC5VEZXN1');
+  gtag('config', 'G-G652JVWEYG');
 </script>
  
+<script>
+  // Meta Ads
+  fbq('track', 'ViewContent', {
+    content_name: 'Ozenvitta',
+    content_category: 'Produto'
+  });
+
+  // Google Analytics
+  gtag('event', 'view_ozenvitta_page', {
+    page_path: '/ozenvitta/',
+    page_title: 'OzenVitta | Sou Leve'
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // KIT 1 - Pote único
+    var kit1 = document.querySelector('a[href*="pladm9pz/cherx0lz"]');
+    if (kit1) {
+      kit1.addEventListener('click', function () {
+        // Meta Pixel
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Kit 1 - Pote Único',
+          value: 147.00,
+          currency: 'BRL'
+        });
+        // GA4
+        gtag('event', 'select_kit', {
+          kit_name: 'kit_1_pote_unico',
+          value: 147.00,
+          currency: 'BRL'
+        });
+      });
+    }
+
+    // KIT 2 - Pacote econômico (3 potes)
+    var kit2 = document.querySelector('a[href*="pla1x2m6/cherx0lz"]');
+    if (kit2) {
+      kit2.addEventListener('click', function () {
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Kit 2 - Pacote Econômico (3 potes)',
+          value: 197.00,
+          currency: 'BRL'
+        });
+        gtag('event', 'select_kit', {
+          kit_name: 'kit_2_pacote_economico',
+          value: 197.00,
+          currency: 'BRL'
+        });
+      });
+    }
+
+    // KIT 3 - Pacote familiar (5 potes)
+    var kit3 = document.querySelector('a[href*="pla2l8pn/cherx0lz"]');
+    if (kit3) {
+      kit3.addEventListener('click', function () {
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Kit 3 - Pacote Familiar (5 potes)',
+          value: 247.00,
+          currency: 'BRL'
+        });
+        gtag('event', 'select_kit', {
+          kit_name: 'kit_3_pacote_familiar',
+          value: 247.00,
+          currency: 'BRL'
+        });
+      });
+    }
+
+    // KIT 4 - Pacote máximo (8 potes)
+    var kit4 = document.querySelector('a[href*="pla66dmo/cherx0lz"]');
+    if (kit4) {
+      kit4.addEventListener('click', function () {
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'Kit 4 - Pacote Máximo (8 potes)',
+          value: 377.00,
+          currency: 'BRL'
+        });
+        gtag('event', 'select_kit', {
+          kit_name: 'kit_4_pacote_maximo',
+          value: 377.00,
+          currency: 'BRL'
+        });
+      });
+    }
+  });
+</script>
+
 
 <style>
 /* Prova social (toast) */
