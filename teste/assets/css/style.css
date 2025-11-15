@@ -1,0 +1,59 @@
+/* assets/css/style.css */
+:root {
+  --container: 1120px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #222;
+}
+
+/* Container padrão */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Imagens responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  background: #02b37a;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Classes utilitárias */
+.mt-24 { margin-top: 24px; }
+.mb-24 { margin-bottom: 24px; }
+.center { text-align: center; }
+img__logo {
+    width: 250px; /* Altere este valor para o tamanho desejado (ex: 200px, 300px, etc.) */
+    height: auto; /* Garante que a proporção da imagem seja mantida */
+    margin: 0 auto 25px; /* Centraliza e adiciona espaço abaixo se necessário */
+}
+
+/* Se a logo estiver dentro de um div com a classe 'logo-lp', você pode querer estilizar o container também */
+.logo-lp {
+    text-align: center; /* Garante que a logo fique centralizada na página */
+    padding-top: 25px;
+}
+
+/* Para telas menores, podemos querer diminuir um pouco para caber melhor */
+@media (max-width: 600px) {
+    .img__logo {
+        width: 180px; /* Exemplo de um tamanho menor para celulares */
+    }
+}
