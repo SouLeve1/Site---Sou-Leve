@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gruposouleve.com.br/sitemap.xml
