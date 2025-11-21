@@ -772,173 +772,6 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
-
-
-<script>
-// ===== Countdown Azul (evergreen) =====
-(function(){
-  // Duração padrão (em segundos). Ajuste aqui: 2 horas.
-  const DURATION = 2 * 60 * 60; // 2h
-  const KEY = "dealCountdownEnd_v1";
-  const $h = document.getElementById('cd-hours');
-  const $m = document.getElementById('cd-mins');
-  const $s = document.getElementById('cd-secs');
-
-  function getEnd(){
-    const saved = localStorage.getItem(KEY);
-    if(saved){
-      const t = parseInt(saved,10);
-      if(!Number.isNaN(t) && t > Date.now()) return t;
-    }
-    const end = Date.now() + DURATION*1000;
-    localStorage.setItem(KEY, String(end));
-    return end;
-  }
-  function pad(n){ return String(n).padStart(2,'0'); }
-
-  let endAt = getEnd();
-  function tick(){
-    const diff = Math.max(0, Math.floor((endAt - Date.now())/1000));
-    const h = Math.floor(diff / 3600);
-    const m = Math.floor((diff % 3600) / 60);
-    const s = diff % 60;
-    if($h){ $h.textContent = pad(h); }
-    if($m){ $m.textContent = pad(m); }
-    if($s){ $s.textContent = pad(s); }
-    if(diff <= 0){
-      // Reinicia quando zera (evergreen)
-      endAt = Date.now() + DURATION*1000;
-      localStorage.setItem(KEY, String(endAt));
-    }
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
-</script>
-
-
-<script>
-// ===== Countdown Azul (2h, para ao zerar) =====
-(function(){
-  const DURATION = 2 * 60 * 60 * 1000; // 2 horas em ms
-  const KEY_END = "dealCountdownFixedEnd_v1";
-  const keyExpired = "dealCountdownFixedExpired_v1";
-  const h = document.getElementById('fx-hours');
-  const m = document.getElementById('fx-mins');
-  const s = document.getElementById('fx-secs');
-  const expiredEl = document.getElementById('deal-expired');
-  const banner = document.getElementById('deal-banner-fixed');
-
-  function pad(n){ return String(n).padStart(2,'0'); }
-
-  function getEnd(){
-    const saved = localStorage.getItem(KEY_END);
-    const expired = localStorage.getItem(keyExpired) === '1';
-    if(expired && saved){ return parseInt(saved,10); }
-    if(saved){
-      const t = parseInt(saved,10);
-      if(!Number.isNaN(t)) return t;
-    }
-    const end = Date.now() + DURATION;
-    localStorage.setItem(KEY_END, String(end));
-    return end;
-  }
-
-  let endAt = getEnd();
-
-  function setExpired(){
-    if(h&&m&&s){ h.textContent = '00'; m.textContent = '00'; s.textContent = '00'; }
-    if(expiredEl){ expiredEl.style.display = 'inline-block'; }
-    if(banner){ banner.classList.add('expired'); }
-    localStorage.setItem(keyExpired, '1');
-  }
-
-  function tick(){
-    const now = Date.now();
-    const diff = Math.max(0, Math.floor((endAt - now)/1000));
-    const hh = Math.floor(diff / 3600);
-    const mm = Math.floor((diff % 3600) / 60);
-    const ss = diff % 60;
-
-    if(h&&m&&s){ h.textContent = pad(hh); m.textContent = pad(mm); s.textContent = pad(ss); }
-
-    if(diff <= 0){
-      setExpired();
-      return; // não reinicia
-    }
-  }
-
-  // Se já está expirado em visitas anteriores, mostrar expirado e não iniciar intervalo
-  const wasExpired = localStorage.getItem(keyExpired) === '1';
-  if(wasExpired && Date.now() >= endAt){
-    setExpired();
-  } else {
-    tick();
-    setInterval(tick, 1000);
-  }
-})();
-</script>
-
-
-<script>
-(function(){
-  const DURATION_MS = (1 * 3600 + 53 * 60 + 2) * 1000; // 1h 53m 02s // 2h
-  const KEY_END = "heroCountdownEnd_v1";
-  const KEY_EX = "heroCountdownExpired_v1";
-  const H = document.getElementById('hc-hours');
-  const M = document.getElementById('hc-mins');
-  const S = document.getElementById('hc-secs');
-  const expiredEl = document.getElementById('hc-expired');
-
-  function pad(n){ return String(n).padStart(2,'0'); }
-
-  function getEnd(){
-    const saved = localStorage.getItem(KEY_END);
-    const exp = localStorage.getItem(KEY_EX) === '1';
-    if(exp && saved) return parseInt(saved,10);
-    if(saved){
-      const t = parseInt(saved,10);
-      if(!Number.isNaN(t)) return t;
-    }
-    const end = Date.now() + DURATION_MS;
-    localStorage.setItem(KEY_END, String(end));
-    return end;
-  }
-
-  let endAt = getEnd();
-
-  function setExpired(){
-    if(H&&M&&S){ H.textContent='00'; M.textContent='00'; S.textContent='00'; }
-    if(expiredEl){ expiredEl.style.display='inline-block'; }
-    localStorage.setItem(KEY_EX, '1');
-  }
-
-  function tick(){
-    const now = Date.now();
-    const diff = Math.max(0, endAt - now);
-    const total = Math.floor(diff/1000);
-    const h = Math.floor(total/3600);
-    const m = Math.floor((total%3600)/60);
-    const s = total%60;
-
-    if(H&&M&&S){ H.textContent = pad(h); M.textContent = pad(m); S.textContent = pad(s); }
-
-    if(diff <= 0){
-      setExpired();
-      clearInterval(intId);
-    }
-  }
-
-  const wasExpired = localStorage.getItem(KEY_EX) === '1';
-  if(wasExpired && Date.now() >= endAt){
-    setExpired();
-    return;
-  }
-  tick();
-  const intId = setInterval(tick, 1000);
-})();
-</script>
-
 </main>
 
 <script>
@@ -974,39 +807,60 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-<script defer>
-document.addEventListener('DOMContentLoaded', function () {
-  // pega todos os carrosséis do Elementor com classe .e-n-carousel.swiper
-  document.querySelectorAll('.e-n-carousel.swiper').forEach(function (carousel) {
-    // sobe até o widget do carrossel (onde estão as setas)
-    const widget = carousel.closest('.elementor-widget-n-carousel') || carousel.parentElement;
+<script>
+  // Função que inicializa TODOS os carrosséis da página
+  function initCarousels() {
+    document.querySelectorAll('.e-n-carousel.swiper').forEach(function (carousel) {
+      // sobe até o widget do carrossel (onde estão as setas)
+      const widget = carousel.closest('.elementor-widget-n-carousel') || carousel.parentElement;
 
-    const nextBtn = widget.querySelector('.elementor-swiper-button-next');
-    const prevBtn = widget.querySelector('.elementor-swiper-button-prev');
+      const nextBtn = widget.querySelector('.elementor-swiper-button-next');
+      const prevBtn = widget.querySelector('.elementor-swiper-button-prev');
 
-    new Swiper(carousel, {
-      loop: true,
-      slidesPerView: 1,
-      spaceBetween: 16,
+      new Swiper(carousel, {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 16,
 
-      navigation: {
-        nextEl: nextBtn,
-        prevEl: prevBtn,
-      },
+        navigation: {
+          nextEl: nextBtn,
+          prevEl: prevBtn,
+        },
 
-      autoplay: {
-        delay: 4000,              // troca a cada 4s
-        disableOnInteraction: false,
-      },
+        autoplay: {
+          delay: 4000,              // troca a cada 4s
+          disableOnInteraction: false,
+        },
 
-      breakpoints: {
-        768: { slidesPerView: 2 },  // tablet
-        1024: { slidesPerView: 4 }, // desktop
-      },
+        breakpoints: {
+          768:  { slidesPerView: 2 }, // tablet
+          1024: { slidesPerView: 4 }, // desktop
+        },
+      });
     });
+  }
+
+  // Só carrega o Swiper quando o carrossel entrar na tela
+  document.addEventListener('DOMContentLoaded', function () {
+    const firstCarousel = document.querySelector('.e-n-carousel.swiper');
+    if (!firstCarousel) return;
+
+    const observer = new IntersectionObserver(function (entries, obs) {
+      if (!entries[0].isIntersecting) return;
+
+      // cria o script do Swiper dinamicamente
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+      script.onload = initCarousels; // só inicia depois que carregar
+      document.body.appendChild(script);
+
+      obs.disconnect(); // para de observar depois de carregar
+    });
+
+    observer.observe(firstCarousel);
   });
-});
 </script>
 
-</body><script src="assets/js/app.js" defer></script></html>
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
